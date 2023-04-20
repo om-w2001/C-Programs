@@ -1,0 +1,79 @@
+/* WAP of linked list using array find  palindrome number */
+#include<stdio.h>
+#include<stdlib.h>
+#include<stdbool.h>
+typedef struct employee{
+	int data;
+	struct employee *next;
+}emp;
+
+emp *head=NULL;
+
+emp* createNode(){
+	getchar();
+	emp *newnode=(emp*)malloc(sizeof(emp));
+	printf("Enter the data:");
+	scanf("%d",&newnode->data);
+
+	newnode->next=NULL;
+	return newnode;
+}
+emp* addNode(){
+	emp *newnode=createNode();
+
+	if(head==NULL){
+		head=newnode;
+	}else{
+		emp *temp=head;
+		while(temp->next!=NULL){
+			temp=temp->next;
+		}
+		temp->next=newnode;
+	}
+	return newnode;
+}
+int countnode(){
+	int count=0;
+	emp*temp=head;
+	while(temp!=NULL){
+		count++;
+		temp=temp->next;
+	}
+	return count;
+}
+int pali(){
+	int x=0;
+	int count=countnode();
+	int arr[count];
+	emp*temp=head;
+	while(temp!=NULL){
+		arr[x]=temp->data;
+		temp=temp->next;
+		x++;
+	}
+	int cnt=count-1;
+	int y=0;
+	while(y<cnt){
+		if(arr[y]!=arr[cnt]){
+			return false;
+		}
+		y++;
+		cnt--;
+	}
+	return true;
+}
+void main(){
+	int x;
+	printf("Enter the node:");
+	scanf("%d",&x);
+	for(int i=1;i<=x;i++){
+		addNode();
+	}
+	if(pali()){
+		printf("yes");
+	}else{
+		printf("no");
+	}
+}
+
+

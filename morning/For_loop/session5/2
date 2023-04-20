@@ -1,0 +1,23 @@
+/*10.Take no rows from the user ROWS=4
+  
+     1
+     4 9
+     64 125 216
+     2401 4096 6561 10000
+     */
+#include<stdio.h>
+void main(){
+	int x;
+	printf("Enter the rows:");
+	scanf("%d",&x);
+	int num=1;
+	for(int i=1;i<=x;i++){
+		for(int j=1;j<=i;j++){
+			
+			printf("%d ",num);
+			num++;
+		}
+		printf("\n");
+	}
+		
+}
